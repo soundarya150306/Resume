@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soundarya R - Data Analyst & Business Intelligence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .header:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .name {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(79, 70, 229, 0.1);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .contact-item:hover {
+            background: rgba(79, 70, 229, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            border-radius: 2px;
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(79, 70, 229, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #4f46e5;
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 0.3rem;
+        }
+
+        .duration {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 0.8rem 1rem;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .project-card:hover {
+            border-color: #4f46e5;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(79, 70, 229, 0.2);
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4f46e5;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(79, 70, 229, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="profile-img">SR</div>
+            <h1 class="name">Soundarya R</h1>
+            <p class="title">Data Analyst & Business Intelligence Specialist</p>
+            <div class="contact-info">
+                <a href="mailto:soundaryaram2006@gmail.com" class="contact-item">
+                    📧 soundaryaram2006@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/soundarya-r-1451aa329/" class="contact-item">
+                    🔗 LinkedIn
+                </a>
+                <a href="https://github.com/soundarya150306" class="contact-item">
+                    💻 GitHub
+                </a>
+                <a href="https://leetcode.com/u/WL45d9ZMjw/" class="contact-item">
+                    🧩 LeetCode
+                </a>
+                <a href="https://www.geeksforgeeks.org/user/soundar9i9p/" class="contact-item">
+                    🎯 GeeksforGeeks
+                </a>
+                <a href="https://www.hackerrank.com/profile/soundarya_cs23" class="contact-item">
+                    🏆 HackerRank
+                </a>
+            </div>
+            <button class="download-btn" onclick="downloadResume()">
+                📄 Download Resume
+            </button>
+        </header>
+
+        <div class="main-content">
+            <section class="section">
+                <h2>Profile Summary</h2>
+                <div class="description" style="margin-bottom: 2rem;">
+                    Passionate about Data Analysis, Business Intelligence, and Digital Marketing. Proficient in transforming complex data into actionable insights that drive strategic decisions and business growth. Proficient in creating interactive dashboards using Power BI, enhancing data accessibility and understanding. Strong focus on integrating digital marketing strategies, striving to optimize performance and enhance customer engagement.
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Technical Skills</h2>
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: #4f46e5; margin-bottom: 0.8rem; font-size: 1.1rem;">Programming Languages</h3>
+                    <div class="skills-grid" style="margin-bottom: 1.5rem;">
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">SQL</div>
+                        <div class="skill-item">C</div>
+                        <div class="skill-item">Java</div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: #4f46e5; margin-bottom: 0.8rem; font-size: 1.1rem;">Analytical Tools</h3>
+                    <div class="skills-grid" style="margin-bottom: 1.5rem;">
+                        <div class="skill-item">Power BI</div>
+                        <div class="skill-item">Tableau</div>
+                        <div class="skill-item">Excel</div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: #4f46e5; margin-bottom: 0.8rem; font-size: 1.1rem;">Technologies & Frameworks</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">Pandas</div>
+                        <div class="skill-item">NumPy</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="section full-width">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">Power BI Sales Performance Dashboard</div>
+                    <div class="project-tech">Power BI, Data Modeling, Data Visualization</div>
+                    <div class="project-description">
+                        Developed an interactive Power BI sales performance dashboard to optimize sales strategy and support data-driven decision-making. Gained hands-on experience in data modeling, cleaning, and creating dynamic visualizations to analyze key performance metrics. Enhanced skills in Power BI while applying advanced data visualization techniques to improve business insights and reporting.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section full-width">
+            <h2>Education</h2>
+            <div class="experience-item">
+                <div class="job-title">Bachelor of Engineering in Computer Science and Engineering</div>
+                <div class="company">Currently Pursuing</div>
+                <div class="duration">2023 - 2027</div>
+                <div class="description">
+                    CGPA: 7.3 | Relevant coursework: Data Visualization, Artificial Intelligence on Edge Computing
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="job-title">Higher Secondary Certificate (HSC)</div>
+                <div class="company">Bannari Amman Vidhya Niketan, Sathyamangalam</div>
+                <div class="duration">2022 - 2023</div>
+                <div class="description">
+                    12th Grade - Percentage: 83%
+                </div>
+            </div>
+        </section>
+
+        <section class="section full-width">
+            <h2>Soft Skills & Languages</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h3 style="color: #4f46e5; margin-bottom: 1rem; font-size: 1.1rem;">Soft Skills</h3>
+                    <div style="display: grid; gap: 0.5rem;">
+                        <div><strong>Interpersonal Skills:</strong> Effective Communication, Conflict Resolution</div>
+                        <div><strong>Analytical Skills:</strong> Problem-Solving, Critical Thinking</div>
+                        <div><strong>Organizational Skills:</strong> Team Collaboration, Leadership, Time Management</div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: #4f46e5; margin-bottom: 1rem; font-size: 1.1rem;">Languages</h3>
+                    <div class="skills-grid" style="grid-template-columns: repeat(3, 1fr);">
+                        <div class="skill-item">English</div>
+                        <div class="skill-item">Tamil</div>
+                        <div class="skill-item">Hindi</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section full-width">
+            <h2>Certifications & Job Simulations</h2>
+            <div class="experience-item">
+                <div class="job-title">Tata Data Visualisation: Empowering Business with Effective Insights</div>
+                <div class="company">Tata Consultancy Services - Forage Job Simulation</div>
+                <div class="duration">July 2025</div>
+                <div class="description">
+                    • Completed a simulation involving creating data visualizations for Tata Consultancy Services<br>
+                    • Prepared questions for a meeting with client senior leadership<br>
+                    • Created visuals for data analysis to help executives with effective decision making
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="job-title">Deloitte Australia Data Analytics Job Simulation</div>
+                <div class="company">Deloitte Australia - Forage Job Simulation</div>
+                <div class="duration">July 2025</div>
+                <div class="description">
+                    • Completed a Deloitte job simulation involving data analysis and forensic technology<br>
+                    • Created a data dashboard using Tableau<br>
+                    • Used Excel to classify data and draw business conclusions
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="job-title">Agentic AI 2025</div>
+                <div class="company">Google</div>
+                <div class="duration">2025</div>
+                <div class="description">
+                    Participated in Google's Agentic AI program focusing on cutting-edge artificial intelligence technologies and applications.
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="job-title">Internship Certification</div>
+                <div class="company">National Small Industries Corporation</div>
+                <div class="description">
+                    Completed internship program focusing on industry practices and professional development.
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function downloadResume() {
+            // Create a comprehensive text version of Soundarya's resume
+            const resumeContent = `
+SOUNDARYA R
+Data Analyst & Business Intelligence Specialist
+
+Email: soundaryaram2006@gmail.com
+LinkedIn: https://www.linkedin.com/in/soundarya-r-1451aa329/
+GitHub: https://github.com/soundarya150306
+LeetCode: https://leetcode.com/u/WL45d9ZMjw/
+GeeksforGeeks: https://www.geeksforgeeks.org/user/soundar9i9p/
+HackerRank: https://www.hackerrank.com/profile/soundarya_cs23
+
+PROFILE SUMMARY
+Passionate about Data Analysis, Business Intelligence, and Digital Marketing. Proficient in transforming complex data into actionable insights that drive strategic decisions and business growth. Proficient in creating interactive dashboards using Power BI, enhancing data accessibility and understanding. Strong focus on integrating digital marketing strategies, striving to optimize performance and enhance customer engagement.
+
+EDUCATION
+Bachelor of Engineering in Computer Science and Engineering | 2023 - 2027 (Pursuing)
+CGPA: 7.3
+Relevant Coursework: Data Visualization, Artificial Intelligence on Edge Computing
+
+Higher Secondary Certificate (HSC) | Bannari Amman Vidhya Niketan, Sathyamangalam | 2022 - 2023
+12th Grade - Percentage: 83%
+
+PROJECTS
+Power BI Sales Performance Dashboard
+• Developed an interactive Power BI sales performance dashboard to optimize sales strategy and support data-driven decision-making
+• Gained hands-on experience in data modeling, cleaning, and creating dynamic visualizations to analyze key performance metrics
+• Enhanced skills in Power BI while applying advanced data visualization techniques to improve business insights and reporting
+
+TECHNICAL SKILLS
+Programming Languages: Python, SQL, C, Java
+Analytical Tools: Power BI, Tableau, Excel
+Technologies/Frameworks: Pandas, NumPy
+
+CERTIFICATIONS & JOB SIMULATIONS
+
+Tata Data Visualisation: Empowering Business with Effective Insights | Tata Consultancy Services - Forage | July 2025
+• Completed a simulation involving creating data visualizations for Tata Consultancy Services
+• Prepared questions for a meeting with client senior leadership
+• Created visuals for data analysis to help executives with effective decision making
+
+Deloitte Australia Data Analytics Job Simulation | Deloitte Australia - Forage | July 2025
+• Completed a Deloitte job simulation involving data analysis and forensic technology
+• Created a data dashboard using Tableau
+• Used Excel to classify data and draw business conclusions
+
+Agentic AI 2025 | Google | 2025
+• Participated in Google's Agentic AI program focusing on cutting-edge artificial intelligence technologies and applications
+
+Internship Certification | National Small Industries Corporation
+• Completed internship program focusing on industry practices and professional development
+
+SOFT SKILLS
+Interpersonal Skills: Effective Communication, Conflict Resolution
+Analytical Skills: Problem-Solving, Critical Thinking
+Organizational Skills: Team Collaboration, Leadership, Time Management
+
+LANGUAGES
+English, Tamil, Hindi
+            `;
+
+            const blob = new Blob([resumeContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Soundarya_R_Resume.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Add smooth scrolling and interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                section.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add click animations to skill items
+            const skillItems = document.querySelectorAll('.skill-item');
+            skillItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-5px) scale(1.05)';
+                    }, 150);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
