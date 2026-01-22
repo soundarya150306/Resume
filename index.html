@@ -3,592 +3,466 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soundarya R - Data Analyst & Business Intelligence</title>
+    <title>Soundarya R - Full Stack Developer & Data Analyst | Erode, Tamilnadu</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        *::selection {
+            background: #667eea;
+            color: white;
+        }
+
         body {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
             min-height: 100vh;
+            overflow-x: hidden;
+            color: #ffffff;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .header:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            font-weight: bold;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .name {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .title {
-            font-size: 1.5rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(79, 70, 229, 0.1);
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: #333;
-        }
-
-        .contact-item:hover {
-            background: rgba(79, 70, 229, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .section h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            border-radius: 2px;
-        }
-
-        .experience-item {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(79, 70, 229, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .experience-item:hover {
-            transform: translateX(10px);
-        }
-
-        .experience-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-
-        .job-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #4f46e5;
-            margin-bottom: 0.5rem;
-        }
-
-        .company {
-            font-weight: 500;
-            color: #555;
-            margin-bottom: 0.3rem;
-        }
-
-        .duration {
-            color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .description {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
-        }
-
-        .skill-item {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 0.8rem 1rem;
-            border-radius: 25px;
-            text-align: center;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
-        }
-
-        .full-width {
-            grid-column: 1 / -1;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 1.5rem;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
+        /* ULTRA VISIBLE GLASS CARDS */
+        .glass-card {
+            background: rgba(15, 15, 35, 0.95) !important;
+            backdrop-filter: blur(25px);
+            border-radius: 24px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            padding: 3rem;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            margin-bottom: 2.5rem;
+            color: #ffffff !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
         }
 
-        .project-card::before {
+        .glass-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: all 0.5s ease;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.7s;
         }
 
-        .project-card:hover {
-            border-color: #4f46e5;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(79, 70, 229, 0.2);
+        .glass-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.6);
+            border-color: rgba(102, 126, 234, 1);
         }
 
-        .project-card:hover::before {
-            left: 100%;
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
 
-        .project-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #4f46e5;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-tech {
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 1rem;
-        }
-
-        .project-description {
-            color: #666;
-            line-height: 1.5;
-        }
-
-        @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .name {
-                font-size: 2.5rem;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .floating-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .floating-circle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
+        .profile-img {
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            margin: 0 auto 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            box-shadow: 0 40px 80px rgba(102, 126, 234, 0.6);
+            animation: glow 2s ease-in-out infinite alternate;
+            border: 6px solid rgba(255, 255, 255, 0.3);
         }
 
-        .floating-circle:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
+        @keyframes glow {
+            0% { box-shadow: 0 40px 80px rgba(102, 126, 234, 0.6); }
+            100% { box-shadow: 0 40px 80px rgba(102, 126, 234, 0.9), 0 0 50px rgba(102, 126, 234, 0.4); }
         }
 
-        .floating-circle:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            top: 60%;
-            right: 10%;
-            animation-delay: 2s;
+        .name {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            letter-spacing: -2px;
         }
 
-        .floating-circle:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
+        .location {
+            font-size: 1.3rem;
+            color: #a0a0ff;
+            margin-bottom: 2rem;
+            font-weight: 400;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+        .title {
+            font-size: 1.8rem;
+            color: #e2e8f0;
+            font-weight: 500;
+            margin-bottom: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* NORMAL SECTION TITLES - NO GRADIENT */
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+            color: #ffffff !important;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 100px;
+            height: 6px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 3px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.3rem 2rem;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            color: #ffffff !important;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-8px);
+            background: rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.8);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.4);
         }
 
         .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff !important;
             border: none;
+            padding: 1.4rem 3.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
             cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.5);
         }
 
         .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(79, 70, 229, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 35px 70px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Layout */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff !important;
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-12px) scale(1.08);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.6);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(25px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff !important;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            color: #e2e8f0 !important;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: #f1f5f9 !important;
+            margin-bottom: 2rem;
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            color: #ffffff !important;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            border: 2px solid rgba(102, 126, 234, 0.6);
+            background: rgba(102, 126, 234, 0.25);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            font-size: 1rem;
+        }
+
+        .project-link:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-color: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 1.5rem 1rem; }
+            .main-content { grid-template-columns: 1fr; }
+            .name { font-size: 3.2rem; }
+            .profile-img { width: 160px; height: 160px; font-size: 3.5rem; }
+            .contact-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="floating-elements">
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-    </div>
-
     <div class="container">
-        <header class="header">
+        <!-- HERO SECTION -->
+        <header class="header glass-card">
             <div class="profile-img">SR</div>
-            <h1 class="name">Soundarya R</h1>
-            <p class="title">Data Analyst & Business Intelligence Specialist</p>
-            <div class="contact-info">
+            <h1 class="name">SOUNDARYA R</h1>
+            <div class="location">Erode, Tamilnadu, India</div>
+            <p class="title">Full Stack Developer | Data Analyst | React.js Specialist</p>
+            
+            <div class="contact-grid">
                 <a href="mailto:soundaryaram2006@gmail.com" class="contact-item">
                     📧 soundaryaram2006@gmail.com
                 </a>
-                <a href="https://www.linkedin.com/in/soundarya-r-1451aa329/" class="contact-item">
-                    🔗 LinkedIn
+                <a href="https://www.linkedin.com/in/soundarya-r-1451aa329/" class="contact-item" target="_blank">
+                    💼 LinkedIn
                 </a>
-                <a href="https://github.com/soundarya150306" class="contact-item">
+                <a href="https://github.com/soundarya150306" class="contact-item" target="_blank">
                     💻 GitHub
-                </a>
-                <a href="https://leetcode.com/u/WL45d9ZMjw/" class="contact-item">
-                    🧩 LeetCode
-                </a>
-                <a href="https://www.geeksforgeeks.org/user/soundar9i9p/" class="contact-item">
-                    🎯 GeeksforGeeks
-                </a>
-                <a href="https://www.hackerrank.com/profile/soundarya_cs23" class="contact-item">
-                    🏆 HackerRank
                 </a>
             </div>
             <button class="download-btn" onclick="downloadResume()">
-                📄 Download Resume
+                🚀 Download Resume
             </button>
         </header>
 
+        <!-- PROFILE SUMMARY & SKILLS -->
         <div class="main-content">
-            <section class="section">
-                <h2>Profile Summary</h2>
-                <div class="description" style="margin-bottom: 2rem;">
-                    Passionate about Data Analysis, Business Intelligence, and Digital Marketing. Proficient in transforming complex data into actionable insights that drive strategic decisions and business growth. Proficient in creating interactive dashboards using Power BI, enhancing data accessibility and understanding. Strong focus on integrating digital marketing strategies, striving to optimize performance and enhance customer engagement.
+            <section class="glass-card">
+                <h2 class="section-title">Profile Summary</h2>
+                <div style="font-size: 1.2rem; line-height: 1.8;">
+                    Computer Science Engineering student with strong fundamentals in <strong>JavaScript, HTML, CSS, and React.js</strong>, 
+                    passionate about building scalable, user-friendly web applications. Experienced in developing API-driven front-end solutions, 
+                    writing clean and maintainable code, and collaborating on real-world projects. Strong problem-solving skills with solid 
+                    foundation in data structures, algorithms, and modern web technologies.
                 </div>
             </section>
 
-            <section class="section">
-                <h2>Technical Skills</h2>
-                <div style="margin-bottom: 1.5rem;">
-                    <h3 style="color: #4f46e5; margin-bottom: 0.8rem; font-size: 1.1rem;">Programming Languages</h3>
-                    <div class="skills-grid" style="margin-bottom: 1.5rem;">
-                        <div class="skill-item">Python</div>
-                        <div class="skill-item">SQL</div>
-                        <div class="skill-item">C</div>
-                        <div class="skill-item">Java</div>
-                    </div>
-                </div>
-                <div style="margin-bottom: 1.5rem;">
-                    <h3 style="color: #4f46e5; margin-bottom: 0.8rem; font-size: 1.1rem;">Analytical Tools</h3>
-                    <div class="skills-grid" style="margin-bottom: 1.5rem;">
-                        <div class="skill-item">Power BI</div>
-                        <div class="skill-item">Tableau</div>
-                        <div class="skill-item">Excel</div>
-                    </div>
-                </div>
-                <div>
-                    <h3 style="color: #4f46e5; margin-bottom: 0.8rem; font-size: 1.1rem;">Technologies & Frameworks</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">Pandas</div>
-                        <div class="skill-item">NumPy</div>
-                    </div>
+            <section class="glass-card">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">React.js</div>
+                    <div class="skill-item">JavaScript</div>
+                    <div class="skill-item">HTML/CSS</div>
+                    <div class="skill-item">Axios</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">Java</div>
+                    <div class="skill-item">SQL</div>
+                    <div class="skill-item">Git/GitHub</div>
+                    <div class="skill-item">REST APIs</div>
                 </div>
             </section>
         </div>
 
-        <section class="section full-width">
-            <h2>Projects</h2>
+        <!-- PROJECTS -->
+        <section class="glass-card">
+            <h2 class="section-title">Featured Project</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-title">Power BI Sales Performance Dashboard</div>
-                    <div class="project-tech">Power BI, Data Modeling, Data Visualization</div>
+                    <div class="project-title">🎬 Cinematch – Movie Recommendation System</div>
+                    <div class="project-tech">React.js • Axios • REST APIs • JavaScript • HTML • CSS</div>
                     <div class="project-description">
-                        Developed an interactive Power BI sales performance dashboard to optimize sales strategy and support data-driven decision-making. Gained hands-on experience in data modeling, cleaning, and creating dynamic visualizations to analyze key performance metrics. Enhanced skills in Power BI while applying advanced data visualization techniques to improve business insights and reporting.
+                        Built a responsive web application using React.js that fetches real-time movie data via REST APIs. Developed dynamic 
+                        and reusable UI components focusing on scalability, clean code, and user-friendly design. Integrated API handling 
+                        with Axios and optimized state management to ensure smooth performance.
+                    </div>
+                    <div class="project-links">
+                        <a href="https://soundarya150306.github.io/Cinematch/" class="project-link" target="_blank">🌐 Live Demo</a>
+                        <a href="https://github.com/soundarya150306/Cinematch" class="project-link" target="_blank">💻 View Code</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section full-width">
-            <h2>Education</h2>
-            <div class="experience-item">
-                <div class="job-title">Bachelor of Engineering in Computer Science and Engineering</div>
-                <div class="company">Currently Pursuing</div>
-                <div class="duration">2023 - 2027</div>
-                <div class="description">
-                    CGPA: 7.3 | Relevant coursework: Data Visualization, Artificial Intelligence on Edge Computing
-                </div>
-            </div>
-            <div class="experience-item">
-                <div class="job-title">Higher Secondary Certificate (HSC)</div>
-                <div class="company">Bannari Amman Vidhya Niketan, Sathyamangalam</div>
-                <div class="duration">2022 - 2023</div>
-                <div class="description">
-                    12th Grade - Percentage: 83%
-                </div>
-            </div>
-        </section>
-
-        <section class="section full-width">
-            <h2>Soft Skills & Languages</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+        <!-- EDUCATION -->
+        <section class="glass-card">
+            <h2 class="section-title">Education</h2>
+            <div style="display: grid; gap: 2rem;">
                 <div>
-                    <h3 style="color: #4f46e5; margin-bottom: 1rem; font-size: 1.1rem;">Soft Skills</h3>
-                    <div style="display: grid; gap: 0.5rem;">
-                        <div><strong>Interpersonal Skills:</strong> Effective Communication, Conflict Resolution</div>
-                        <div><strong>Analytical Skills:</strong> Problem-Solving, Critical Thinking</div>
-                        <div><strong>Organizational Skills:</strong> Team Collaboration, Leadership, Time Management</div>
+                    <div class="project-title">Bachelor of Engineering - Computer Science & Engineering</div>
+                    <div class="project-tech">Bannari Amman Institute of Technology</div>
+                    <div style="color: #e2e8f0; font-size: 1.1rem; font-weight: 500;">
+                        2023 - 2027 (Pursuing) | CGPA: 7.5
                     </div>
                 </div>
                 <div>
-                    <h3 style="color: #4f46e5; margin-bottom: 1rem; font-size: 1.1rem;">Languages</h3>
-                    <div class="skills-grid" style="grid-template-columns: repeat(3, 1fr);">
-                        <div class="skill-item">English</div>
-                        <div class="skill-item">Tamil</div>
-                        <div class="skill-item">Hindi</div>
+                    <div class="project-title">Higher Secondary Certificate (HSC)</div>
+                    <div class="project-tech">Bannari Amman Vidhya Nikethan</div>
+                    <div style="color: #e2e8f0; font-size: 1.1rem; font-weight: 500;">
+                        2022 - 2023 | 87.5%
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section full-width">
-            <h2>Certifications & Job Simulations</h2>
-            <div class="experience-item">
-                <div class="job-title">Tata Data Visualisation: Empowering Business with Effective Insights</div>
-                <div class="company">Tata Consultancy Services - Forage Job Simulation</div>
-                <div class="duration">July 2025</div>
-                <div class="description">
-                    • Completed a simulation involving creating data visualizations for Tata Consultancy Services<br>
-                    • Prepared questions for a meeting with client senior leadership<br>
-                    • Created visuals for data analysis to help executives with effective decision making
+        <!-- CERTIFICATIONS & SOFT SKILLS -->
+        <div class="main-content">
+            <section class="glass-card">
+                <h2 class="section-title">Certifications & Achievements</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">National Small Industries Corporation<br><span style="font-size: 0.85rem; font-weight: 400;">Internship</span></div>
+                    <div class="skill-item">Deloitte Australia Data Analytics<br><span style="font-size: 0.85rem;">Forage - July 2025</span></div>
+                    <div class="skill-item">Tata Data Visualisation<br><span style="font-size: 0.85rem;">Forage - July 2025</span></div>
+                    <div class="skill-item">Cisco Networking Academy<br><span style="font-size: 0.85rem;">Cybersecurity - Dec 2025</span></div>
                 </div>
-            </div>
-            <div class="experience-item">
-                <div class="job-title">Deloitte Australia Data Analytics Job Simulation</div>
-                <div class="company">Deloitte Australia - Forage Job Simulation</div>
-                <div class="duration">July 2025</div>
-                <div class="description">
-                    • Completed a Deloitte job simulation involving data analysis and forensic technology<br>
-                    • Created a data dashboard using Tableau<br>
-                    • Used Excel to classify data and draw business conclusions
+            </section>
+
+            <section class="glass-card">
+                <h2 class="section-title">Soft Skills & Languages</h2>
+                <div style="font-size: 1.15rem;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Interpersonal:</strong> Effective Communication, Conflict Resolution
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Analytical:</strong> Problem-Solving, Critical Thinking
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Organizational:</strong> Team Collaboration, Leadership, Time Management
+                    </div>
+                    <div class="skills-grid" style="margin-top: 1.5rem;">
+                        <div class="skill-item" style="font-size: 1rem;">English</div>
+                        <div class="skill-item" style="font-size: 1rem;">Tamil</div>
+                        <div class="skill-item" style="font-size: 1rem;">Hindi</div>
+                    </div>
                 </div>
-            </div>
-            <div class="experience-item">
-                <div class="job-title">Agentic AI 2025</div>
-                <div class="company">Google</div>
-                <div class="duration">2025</div>
-                <div class="description">
-                    Participated in Google's Agentic AI program focusing on cutting-edge artificial intelligence technologies and applications.
-                </div>
-            </div>
-            <div class="experience-item">
-                <div class="job-title">Internship Certification</div>
-                <div class="company">National Small Industries Corporation</div>
-                <div class="description">
-                    Completed internship program focusing on industry practices and professional development.
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
 
     <script>
         function downloadResume() {
-            // Create a comprehensive text version of Soundarya's resume
-            const resumeContent = `
-SOUNDARYA R
-Data Analyst & Business Intelligence Specialist
-
+            const resumeContent = `SOUNDARYA R
+Erode, Tamilnadu, India
 Email: soundaryaram2006@gmail.com
 LinkedIn: https://www.linkedin.com/in/soundarya-r-1451aa329/
-GitHub: https://github.com/soundarya150306
-LeetCode: https://leetcode.com/u/WL45d9ZMjw/
-GeeksforGeeks: https://www.geeksforgeeks.org/user/soundar9i9p/
-HackerRank: https://www.hackerrank.com/profile/soundarya_cs23
 
 PROFILE SUMMARY
-Passionate about Data Analysis, Business Intelligence, and Digital Marketing. Proficient in transforming complex data into actionable insights that drive strategic decisions and business growth. Proficient in creating interactive dashboards using Power BI, enhancing data accessibility and understanding. Strong focus on integrating digital marketing strategies, striving to optimize performance and enhance customer engagement.
+Computer Science Engineering student with strong fundamentals in JavaScript, HTML, CSS, and React.js, passionate about building scalable, user-friendly web applications. Experienced in developing API-driven front-end solutions, writing clean and maintainable code.
 
 EDUCATION
-Bachelor of Engineering in Computer Science and Engineering | 2023 - 2027 (Pursuing)
-CGPA: 7.3
-Relevant Coursework: Data Visualization, Artificial Intelligence on Edge Computing
-
-Higher Secondary Certificate (HSC) | Bannari Amman Vidhya Niketan, Sathyamangalam | 2022 - 2023
-12th Grade - Percentage: 83%
+B.E. Computer Science & Engineering | Bannari Amman Institute of Technology
+2023-2027 (Pursuing) | CGPA: 7.5
+HSC | Bannari Amman Vidhya Nikethan | 2022-2023 | 87.5%
 
 PROJECTS
-Power BI Sales Performance Dashboard
-• Developed an interactive Power BI sales performance dashboard to optimize sales strategy and support data-driven decision-making
-• Gained hands-on experience in data modeling, cleaning, and creating dynamic visualizations to analyze key performance metrics
-• Enhanced skills in Power BI while applying advanced data visualization techniques to improve business insights and reporting
+CINEMATCH – Movie Recommendation System
+• Responsive React.js web app with real-time REST API integration
+• Dynamic UI components with Axios and optimized state management
+• Live: https://soundarya150306.github.io/Cinematch/
 
 TECHNICAL SKILLS
-Programming Languages: Python, SQL, C, Java
-Analytical Tools: Power BI, Tableau, Excel
-Technologies/Frameworks: Pandas, NumPy
+Web: HTML, CSS, JavaScript, React.js, Axios
+Languages: JavaScript, Python, Java, C, SQL
+Tools: Git, GitHub, REST APIs, Excel
+Fundamentals: DBMS, Data Structures
 
-CERTIFICATIONS & JOB SIMULATIONS
-
-Tata Data Visualisation: Empowering Business with Effective Insights | Tata Consultancy Services - Forage | July 2025
-• Completed a simulation involving creating data visualizations for Tata Consultancy Services
-• Prepared questions for a meeting with client senior leadership
-• Created visuals for data analysis to help executives with effective decision making
-
-Deloitte Australia Data Analytics Job Simulation | Deloitte Australia - Forage | July 2025
-• Completed a Deloitte job simulation involving data analysis and forensic technology
-• Created a data dashboard using Tableau
-• Used Excel to classify data and draw business conclusions
-
-Agentic AI 2025 | Google | 2025
-• Participated in Google's Agentic AI program focusing on cutting-edge artificial intelligence technologies and applications
-
-Internship Certification | National Small Industries Corporation
-• Completed internship program focusing on industry practices and professional development
+CERTIFICATIONS
+• National Small Industries Corporation Internship
+• Deloitte Australia Data Analytics (Forage - July 2025)
+• Tata Data Visualisation (Forage - July 2025)
+• Cisco Networking Academy: Introduction to Cybersecurity (Dec 2025)
 
 SOFT SKILLS
-Interpersonal Skills: Effective Communication, Conflict Resolution
-Analytical Skills: Problem-Solving, Critical Thinking
-Organizational Skills: Team Collaboration, Leadership, Time Management
-
-LANGUAGES
-English, Tamil, Hindi
-            `;
+Interpersonal: Communication, Conflict Resolution
+Analytical: Problem-Solving, Critical Thinking
+Organizational: Team Collaboration, Leadership`;
 
             const blob = new Blob([resumeContent], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
@@ -600,31 +474,6 @@ English, Tamil, Hindi
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
         }
-
-        // Add smooth scrolling and interactive effects
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add hover effects to sections
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px) scale(1.02)';
-                });
-                section.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-
-            // Add click animations to skill items
-            const skillItems = document.querySelectorAll('.skill-item');
-            skillItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = 'translateY(-5px) scale(1.05)';
-                    }, 150);
-                });
-            });
-        });
     </script>
 </body>
 </html>
